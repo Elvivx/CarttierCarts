@@ -1,9 +1,9 @@
 import img from "./assets/imgs/edwin-chen-_ju6ZXbNKvY-unsplash.jpg"
 import Stars from "./Stars"
-function CartItems() {
+function CartItems({ toggle }) {
   return (
     <>
-      <div className='cartItem'>
+      <div className='cartItem' onClick={toggle}>
         <div className='img'>
           <img src={img} alt='#' />
         </div>
