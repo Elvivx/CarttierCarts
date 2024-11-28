@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import CartItems from "./CartItems"
 function Cart({ checkoutToggle, itemDescToggle }) {
   return (
@@ -18,5 +19,9 @@ function Cart({ checkoutToggle, itemDescToggle }) {
       </section>
     </>
   )
+}
+Cart.propTypes = {
+  checkoutToggle: PropTypes.func.isRequired,
+  itemDescToggle: PropTypes.func.isRequired,
 }
 export default Cart

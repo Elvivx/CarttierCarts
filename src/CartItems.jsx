@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import img from "./assets/imgs/edwin-chen-_ju6ZXbNKvY-unsplash.jpg"
 import Stars from "./Stars"
 function CartItems({ toggle }) {
@@ -22,5 +23,8 @@ function CartItems({ toggle }) {
       </div>
     </>
   )
+}
+CartItems.propTypes = {
+  toggle: PropTypes.func.isRequired,
 }
 export default CartItems

@@ -1,4 +1,7 @@
 function Checkout() {
+  const submit = (e) => {
+    e.preventDefault()
+  }
   return (
     <>
       <section className='checkout contents'>
@@ -13,7 +16,7 @@ function Checkout() {
                 <h1>Delivery Information</h1>
                 <button>Edit Information</button>
               </div>
-              <form action='#'>
+              <form onSubmit={submit}>
                 <label htmlFor=''>Name</label>
                 <input type='text' placeholder='Onuoha Elvis' />
                 <label htmlFor=''>Address</label>

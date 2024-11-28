@@ -205,9 +205,11 @@ $font-weight-large: 800;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         gap: 20px;
+        padding-bottom: 20px;
         .item {
           border-radius: 10px;
           overflow: hidden;
+
           .img {
             position: relative;
             height: 250px;
@@ -237,6 +239,7 @@ $font-weight-large: 800;
           .itemInfo {
             display: flex;
             gap: 30px;
+            padding: 5px;
             justify-content: space-between;
             .left {
               display: flex;
@@ -261,7 +264,7 @@ $font-weight-large: 800;
           }
           transition: all 0.2s ease;
           &:hover {
-            transform: scale(1.05);
+            box-shadow: 0 0 10px #00000081;
           }
         }
       }

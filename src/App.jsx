@@ -1,13 +1,15 @@
+import PropTypes from "prop-types"
 import "./assets/App.scss"
 import Shop from "./Shop"
 import FullItemDescription from "./ItemDescription"
 import img from "./assets/imgs/freestocks-_3Q3tsJ01nc-unsplash.jpg"
 import Cart from "./Cart"
 import Checkout from "./Checkout"
-import { Children, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+// import { Link } from "react-router-dom"
 function App() {
   const [cart, setCart] = useState("")
-  const [fav, setFav] = useState("")
+  const [fav, setFav] = useState(false)
   const [displayHero, setDisplayHero] = useState(true)
   const [displayCart, setDisplayCart] = useState(false)
   const [displayCheckout, setDisplayCheckout] = useState(false)
@@ -48,8 +50,9 @@ function App() {
     setCart([...cart, e.currentTarget.parentElement.parentElement.parentElement])
   }
   const addFav = (e) => {
-    console.log(e.currentTarget.parentElement)
+    console.log(e.currentTarget)
     // setFav([...fav, e.currentTarget.parentElement.parentElement.parentElement])
+    setFav(!fav)
   }
   useEffect(() => {
     console.log(fav)
@@ -85,7 +88,7 @@ function App() {
           <Nav toggle={navToggle} cartToggle={cartToggle} home={home} />
           {displayHero ? (
             <Hero>
-              <Shop itemDescToggle={itemDescToggle} addToCart={addToCart} addFav={addFav} />
+              <Shop itemDescToggle={itemDescToggle} addToCart={addToCart} addFav={addFav} fav={fav} />
             </Hero>
           ) : (
             ""
@@ -94,11 +97,15 @@ function App() {
           {displayCart ? <Cart checkoutToggle={checkoutToggle} itemDescToggle={itemDescToggle} /> : ""}
           {displayCheckout ? <Checkout /> : ""}
         </section>
+        {/* <FullItemDescription />
+        <Cart />
+        <Checkout /> */}
         <Footer />
       </section>
     </>
   )
 }
+
 const Nav = ({ toggle, cartToggle, home }) => {
   return (
     <nav className='navs'>
@@ -164,7 +171,7 @@ const Nav = ({ toggle, cartToggle, home }) => {
             />
           </svg>
         </div>
-        <button>
+        <button onClick={getUser}>
           <svg viewBox='0 0 24 24' width='30' xmlns='http://www.w3.org/2000/svg'>
             <title />
             <circle cx='12' cy='8' fill='#464646' r='4' />
@@ -271,7 +278,6 @@ const Hero = ({ children }) => {
           </div>
         </div>
         {children}
-        {/* <Shop /> */}
       </div>
     </>
   )
@@ -328,4 +334,28 @@ const Footer = () => {
     </>
   )
 }
+
+// Props Validation
+Nav.propTypes = {
+  toggle: PropTypes.func,
+  cartToggle: PropTypes.func,
+  home: PropTypes.func,
+}
+Hero.propTypes = {
+  children: PropTypes.object,
+}
+
 export default App
+
+// appwrite login
+import { account } from "./appwrite"
+
+const getUser = async () => {
+  login()
+  const user = await account.get()
+  console.log(user)
+}
+
+const login = async () => {
+  account.createOAuth2Session("google", "http://localhost:5173/", "http://localhost:5173/fucked")
+}
