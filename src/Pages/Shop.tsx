@@ -1,6 +1,8 @@
 // import PropTypes from "prop-types"
+import { useAppContext } from "../Context/Context";
 import ShoppingItem from "./ShoppingItem";
-const Shop: React.FC<Shop> = ({ addToCart, itemDescToggle, fav, addFav }) => {
+const Shop = () => {
+  const { addToCart, itemDescToggle, fav, addFav } = useAppContext();
   return (
     <>
       <div className="shopItems">

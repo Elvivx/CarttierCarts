@@ -1,6 +1,6 @@
 import img from "../assets/imgs/freestocks-_3Q3tsJ01nc-unsplash.jpg";
 import Shop from "./Shop";
-const Home: React.FC<Home> = ({ children }) => {
+const Home: React.FC = () => {
   return (
     <>
       <div className="hero">
@@ -73,14 +73,11 @@ const Home: React.FC<Home> = ({ children }) => {
             </div>
           </div>
         </div>
-        {/* {children} */}
+
         <Shop />
       </div>
     </>
   );
 };
-interface Home {
-  children: React.ReactNode;
-}
 
 export default Home;
