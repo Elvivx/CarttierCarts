@@ -1,4 +1,4 @@
-import img from "./assets/imgs/edwin-chen-_ju6ZXbNKvY-unsplash.jpg";
+import img from "../assets/imgs/edwin-chen-_ju6ZXbNKvY-unsplash.jpg";
 import Stars from "./Stars";
 const CartItems: React.FC<CartItems> = ({ toggle }) => {
   return (

@@ -1,5 +1,5 @@
 // import PropTypes from "prop-types"
-import img from "./assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
+import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 import Stars from "./Stars";
 const ShoppingItem: React.FC<ShoppingItem> = ({
   addToCart,
