@@ -1,7 +1,7 @@
 import { lazy } from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-// const Home = lazy(() => import("../Pages/Home"));
+const Home = lazy(() => import("../Pages/Home"));
 const Cart = lazy(() => import("../Pages/Cart"));
 const Shop = lazy(() => import("../Pages/Shop"));
 
@@ -9,15 +9,15 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" component={Home} /> */}
-        {/* <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} /> */}
-        {/* <Route path="/shoppingItem" component={ShoppingItem} /> */}
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/about" element={About} />
+      <Route path="/contact" element={Contact} /> */}
+        {/* <Route path="/shoppingItem" element={ShoppingItem} /> */}
 
-        {/*  <Route path="/itemDescription" component={ItemDescription} />
-        <Route path="/stars" component={Stars} />
-        <Route path="/cartItems" component={CartItems} />
-        <Route path="/cart" component={Cart} /> */}
+        {/*  <Route path="/itemDescription" element={ItemDescription} />
+        <Route path="/stars" element={Stars} />
+        <Route path="/cartItems" element={CartItems} />
+        <Route path="/cart" element={Cart} /> */}
       </Routes>
     </BrowserRouter>
   );
