@@ -1,22 +1,23 @@
-import { useAppContext } from "../Context/Context";
+import { NavLink } from "react-router-dom";
 import CartItems from "./CartItems";
 const Cart = () => {
-  const { checkoutToggle, itemDescToggle } = useAppContext();
   return (
     <>
       <section className="cart contents">
         <h1>Cart</h1>
         <hr />
-        <CartItems toggle={itemDescToggle} />
-        {/* <CartItems />
         <CartItems />
         <CartItems />
         <CartItems />
         <CartItems />
         <CartItems />
         <CartItems />
-        <CartItems /> */}
-        <button onClick={checkoutToggle}>Checkout</button>
+        <CartItems />
+        <CartItems />
+        <CartItems />
+        <NavLink to="/checkout">
+          <button>To Checkout</button>
+        </NavLink>
       </section>
     </>
   );

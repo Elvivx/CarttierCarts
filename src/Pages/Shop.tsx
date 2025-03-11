@@ -1,4 +1,3 @@
-// import PropTypes from "prop-types"
 import { useAppContext } from "../Context/Context";
 import ShoppingItem from "./ShoppingItem";
 const Shop = () => {

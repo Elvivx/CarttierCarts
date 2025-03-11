@@ -4,7 +4,8 @@ import Layout from "../Layout/Layout";
 
 const Home = lazy(() => import("../Pages/Home"));
 const Cart = lazy(() => import("../Pages/Cart"));
-// const Shop = lazy(() => import("../Pages/Shop"));
+const Checkout = lazy(() => import("../Pages/Checkout"));
+const ItemDescription = lazy(() => import("../Pages/ItemDescription"));
 
 const AppRouter = () => {
   return (
@@ -12,14 +13,9 @@ const AppRouter = () => {
       <Routes>
         <Route path="" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/about" element={About} />
-      <Route path="/contact" element={Contact} /> */}
-          {/* <Route path="/shoppingItem" element={ShoppingItem} /> */}
-
-          {/* <Route path="/itemDescription" element={ItemDescription} />
-        <Route path="/stars" element={Stars} />
-        <Route path="/cartItems" element={CartItems} /> */}
           <Route path="/cart" element={<Cart />} />
+          <Route path="/item" element={<ItemDescription />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>

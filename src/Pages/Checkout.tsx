@@ -1,6 +1,6 @@
 function Checkout() {
-  const submit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
   };
   return (
     <>
