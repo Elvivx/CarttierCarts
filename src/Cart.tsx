@@ -1,9 +1,9 @@
-import PropTypes from "prop-types"
-import CartItems from "./CartItems"
-function Cart({ checkoutToggle, itemDescToggle }) {
+// import PropTypes from "prop-types"
+import CartItems from "./CartItems";
+const Cart: React.FC<Cart> = ({ checkoutToggle, itemDescToggle }) => {
   return (
     <>
-      <section className='cart contents'>
+      <section className="cart contents">
         <h1>Cart</h1>
         <hr />
         <CartItems toggle={itemDescToggle} />
@@ -18,10 +18,10 @@ function Cart({ checkoutToggle, itemDescToggle }) {
         <button onClick={checkoutToggle}>Checkout</button>
       </section>
     </>
-  )
+  );
+};
+interface Cart {
+  checkoutToggle: () => void;
+  itemDescToggle: () => void;
 }
-Cart.propTypes = {
-  checkoutToggle: PropTypes.func.isRequired,
-  itemDescToggle: PropTypes.func.isRequired,
-}
-export default Cart
+export default Cart;
