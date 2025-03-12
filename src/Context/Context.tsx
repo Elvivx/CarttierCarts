@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 interface AppContextProps {
   cart: [];
-  addToCart: (item: object) => void;
+  addToCart: (item: object, q?: number) => void;
   items: Item[];
 }
 

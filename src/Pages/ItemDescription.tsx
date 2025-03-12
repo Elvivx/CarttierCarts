@@ -46,6 +46,10 @@ function FullItemDescription() {
     }
   };
 
+  const cartBtn = (item: Item, quantity: number) => {
+    addToCart(item, quantity);
+  };
+
   return (
     <>
       <div className="contents">
@@ -120,7 +124,7 @@ function FullItemDescription() {
                 <button className="buy">Buy Now</button>
                 <button
                   className="cart"
-                  onClick={() => addToCart(item, quantity)}
+                  onClick={() => cartBtn(item, quantity)}
                 >
                   Add to Cart
                 </button>

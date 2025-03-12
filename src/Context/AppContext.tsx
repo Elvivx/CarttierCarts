@@ -4,14 +4,7 @@ import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 
 interface Item {
   id: number;
-  // img: string;
-  // name: string;
-  // desc: string;
-  // rating: number;
-  // rateNum: number;
-  // price: number;
   quantity: number;
-  // TotalQuantity: number;
 }
 const AppContext: React.FC<AppContext> = ({ children }) => {
   const [cart, setCart] = useState<Item[]>([]);
