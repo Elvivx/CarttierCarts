@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Stars from "./Stars";
 import { NavLink } from "react-router-dom";
+import { useAppContext } from "../Context/Context";
 
 const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
   const [fav, setfav] = useState<boolean>(false);
   const { img, name, desc, price, rating, rateNum } = itemInfo;
+  const { addToCart } = useAppContext();
 
   const addFav = (index: number): void => {
     console.log(index);
@@ -12,13 +14,17 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
     // setFav([...fav, e.currentTarget.parentElement.parentElement.parentElement])
     setfav(!fav);
   };
+  const Cart = (item: object) => {
+    addToCart(item);
+  };
 
   return (
     <>
       <div className="item" key={index} id={index.toString()}>
-        {/* <NavLink to="/item"> */}
         <div className="img">
-          <img src={img} alt="itemImage" />
+          <NavLink to={`/item/${name}`}>
+            <img src={img} alt="itemImage" />
+          </NavLink>
           <span className="fav" onClick={() => addFav(index)}>
             {fav ? (
               <svg
@@ -47,10 +53,9 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
             )}
           </span>
         </div>
-        {/* </NavLink> */}
-        <NavLink to="/item">
-          <div className="itemInfo">
-            <div className="left">
+        <div className="itemInfo">
+          <div className="left">
+            <NavLink to="/item">
               <h3 className="itemName">{name}</h3>
               <span className="itemDesc">{desc}</span>
               <div className="rating">
@@ -59,15 +64,15 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
                 </span>
                 <span className="rateNum">({rateNum})</span>
               </div>
-              <button>Add to Cart</button>
-            </div>
-            <div className="amount">
-              <small>$</small>
-              <span>{price}</span>
-              <small>.00</small>
-            </div>
+            </NavLink>
+            <button onClick={() => Cart(itemInfo)}>Add to Cart</button>
           </div>
-        </NavLink>
+          <div className="amount">
+            <small>$</small>
+            <span>{price}</span>
+            <small>.00</small>
+          </div>
+        </div>
       </div>
     </>
   );

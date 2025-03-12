@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Context } from "./Context";
 import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 
 const AppContext: React.FC<AppContext> = ({ children }) => {
-  const [cart, setCart] = useState<string[]>();
+  interface Item {
+    img: string;
+    name: string;
+    desc: string;
+    rating: number;
+    rateNum: number;
+    price: number;
+  }
+
+  const [cart, setCart] = useState<object[]>([]);
+  //   const [fav, setFav] = useState<[]>([]);
   const items = [
     {
       img: img,
@@ -46,15 +56,35 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       price: 689,
     },
   ];
+  const addToCart = (item: Item) => {
+    console.log(item);
+    const check = cart.filter((i) => i === item);
+    // console.log(check);
+    if (check.length === 0) {
+      setCart([...cart, item]);
+    } else {
+      console.log("Item already in cart");
+    }
+  };
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   const state = {
     cart,
-    setCart,
+    // fav,
     items,
+    addToCart,
   };
   return <Context.Provider value={state}>{children}</Context.Provider>;
 };
 interface AppContext {
   children: React.ReactNode;
-  items: [];
+  //   items: [];
+  //   state: {
+  //     cart: [];
+  //     items: [];
+  //     addToCart: (item: object) => void;
+  //   };
 }
 export default AppContext;

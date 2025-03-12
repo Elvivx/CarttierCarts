@@ -2,7 +2,7 @@ import { useAppContext } from "../Context/Context";
 import ShoppingItem from "./ShoppingItem";
 const Shop = () => {
   const { items } = useAppContext();
-  console.log(items);
+  // console.log(items);
   return (
     <>
       <div className="shopItems">

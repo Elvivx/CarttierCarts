@@ -1,5 +1,20 @@
 import { createContext, useContext } from "react";
-export const Context = createContext();
+
+interface AppContextProps {
+  cart: [];
+  addToCart: (item: object) => void;
+  items: {
+    img: string;
+    name: string;
+    desc: string;
+    rating: number;
+    rateNum: number;
+    price: number;
+  };
+}
+
+export const Context = createContext<AppContextProps | undefined>(undefined);
+
 export function useAppContext() {
   const context = useContext(Context);
   if (context == undefined)

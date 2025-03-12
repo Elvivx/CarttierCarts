@@ -1,24 +1,28 @@
 import { NavLink } from "react-router-dom";
-import img from "../assets/imgs/edwin-chen-_ju6ZXbNKvY-unsplash.jpg";
 import Stars from "./Stars";
-const CartItems = () => {
+import { useAppContext } from "../Context/Context";
+
+const CartItems = ({ itemInfo }) => {
+  const { img, name, desc, price, rating, rateNum } = itemInfo;
+  const { items, cart } = useAppContext();
+  console.log(cart);
   return (
     <>
-      <NavLink to="/item">
+      <NavLink to={`/item/${name}`}>
         <div className="cartItem">
           <div className="img">
             <img src={img} alt="#" />
           </div>
-          <h2 className="itemName">Earbuds Pro Max</h2>
+          <h2 className="itemName">{name}</h2>
           <div className="rating">
             <span className="stars">
-              <Stars rating={4} />
+              <Stars rating={rating} />
             </span>
-            <span className="rateNum">(121)</span>
+            <span className="rateNum">({rateNum})</span>
           </div>
           <div className="amount">
             <small>$</small>
-            <span>89</span>
+            <span>{price}</span>
             <small>.00</small>
           </div>
         </div>
@@ -28,5 +32,13 @@ const CartItems = () => {
 };
 interface CartItems {
   toggle: () => void;
+  itemInfo: {
+    img: string;
+    name: string;
+    desc: string;
+    price: number;
+    rating: number;
+    rateNum: number;
+  };
 }
 export default CartItems;
