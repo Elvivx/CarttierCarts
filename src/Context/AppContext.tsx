@@ -69,14 +69,16 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       TotalQunatity: 10,
     },
   ];
-  const addToCart = (item: Item) => {
+  const addToCart = (item: Item, q: number) => {
     console.log(item);
     const check = cart.filter((i) => i.id === item.id);
     console.log(check);
+
     if (check.length === 0) {
       //   console.log(cart);
-
-      setCart([...cart, item]);
+      const isNumber = (value: number) => typeof value === "number";
+      console.log(q);
+      setCart([...cart, { ...item, quantity: isNumber(q) ? q : 1 }]);
       //   if (cart.filter((i) => i.id === item.id)) return;
       console.log("Item added to cart");
     } else {

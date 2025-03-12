@@ -1,14 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import { useAppContext } from "../Context/Context";
 import Stars from "./Stars";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function FullItemDescription() {
   const { addToCart, items } = useAppContext();
   const [search] = useSearchParams();
   const itemId = Number(search.get("id"));
   const [quantity, setQunatity] = useState<number>(1);
+  const [item, setItem] = useState(() => items.filter((i) => i.id === itemId));
   // console.log(itemId, items);
-  const item = items.filter((i) => i.id === itemId);
   // console.log(item);
   const itemQunatity = (num: number) => {
     if (num === 1) {
@@ -19,13 +19,17 @@ function FullItemDescription() {
       setQunatity(quantity - 1);
     }
   };
+  useEffect(() => {
+    console.log(item);
+    // setItem(prev => prev.map(i)=>{...i, quantities: quantity});
+  }, [quantity]);
   return (
     <>
-      {item.map((item) => (
-        <div className="contents" key={item.id}>
+      {item.map((i) => (
+        <div className="contents" key={i.id}>
           <div className="itemDescrip ">
             <div className="itemImg">
-              <img src={item.img} alt="img" />
+              <img src={i.img} alt="img" />
             </div>
 
             <div className="itemDescript">
@@ -37,14 +41,14 @@ function FullItemDescription() {
 
               <div className="rating">
                 <span className="stars">
-                  <Stars rating={item.rating} />
+                  <Stars rating={i.rating} />
                 </span>
-                <span className="rateNum">({item.rateNum})</span>
+                <span className="rateNum">({i.rateNum})</span>
               </div>
               <hr />
               <div className="amount">
                 <h2 className="pay">
-                  ${item.price}.00 Now 0r ${item.price / 12} /month
+                  ${i.price}.00 Now 0r ${i.price / 12} /month
                 </h2>
                 <span>suggested payments with 6 months special financing</span>
               </div>
@@ -82,7 +86,7 @@ function FullItemDescription() {
                     <p>
                       <span>Only </span>
                       <span style={{ color: "#1ab91f", fontWeight: 700 }}>
-                        {item.TotalQunatity} item{item.TotalQunatity > 1 && "s"}
+                        {i.TotalQunatity} item{i.TotalQunatity > 1 && "s"}
                       </span>
                       <span> left!</span>
                     </p>
@@ -91,7 +95,10 @@ function FullItemDescription() {
                 </div>
                 <div className="btns">
                   <button className="buy">Buy Now</button>
-                  <button className="cart" onClick={() => addToCart(item)}>
+                  <button
+                    className="cart"
+                    onClick={() => addToCart(i, quantity)}
+                  >
                     Add to Cart
                   </button>
                 </div>

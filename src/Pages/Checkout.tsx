@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
+import { useAppContext } from "../Context/Context";
+
 function Checkout() {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+  const {
+    cart,
+  }: { cart: { id: number; name: string; price: number; quantity: number }[] } =
+    useAppContext();
+  const [Total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const total = cart.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+    setTotal(total);
+  }, [cart]);
+  console.log(cart);
   return (
     <>
       <section className="checkout contents">
@@ -9,7 +25,21 @@ function Checkout() {
           <div className="review-delivery">
             <div className="review">
               <h1>Review Items And Summary</h1>
-              <Review />
+              {cart.map(
+                (item: {
+                  id: number;
+                  name: string;
+                  price: number;
+                  quantity: number;
+                }) => (
+                  <Review key={item.id} item={item} />
+                )
+              )}
+              <div className="total">
+                <h1 className="text-3xl text-green-500">Total</h1>
+                <h2>${Total}.00</h2>
+                <button>Proceed to Checkout</button>
+              </div>
             </div>
             <div className="deliver">
               <div className="top">
@@ -84,19 +114,27 @@ function Checkout() {
     </>
   );
 }
-const Review = () => {
+interface ReviewItem {
+  id: number;
+  img: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+const Review = ({ item }: { item: ReviewItem }) => {
   return (
     <div className="reviewItem">
       <div className="left">
         <div className="img">
-          <img src="#" alt="#" />
+          <img src={item.img} alt="#" />
         </div>
-        <p>Airpods-Max Pro</p>
+        <p>{item.name}</p>
       </div>
       <div className="amount">
-        <p>$549.00</p>
+        <p>${item.price * item.quantity}.00</p>
         <span>
-          Quantity: <span className="quantity">1</span>
+          Quantity: <span className="quantity">{item.quantity}</span>
         </span>
       </div>
     </div>
