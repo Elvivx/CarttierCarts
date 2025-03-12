@@ -8,8 +8,8 @@ const Shop = () => {
       <div className="shopItems">
         <h2 className="title">Headphones For You!</h2>
         <div className="items">
-          {items.map((item) => (
-            // <ShoppingItem itemInfo={item} />
+          {items.map((item, index) => (
+            <ShoppingItem itemInfo={item} index={index} key={index} />
           ))}
           {/* <ShoppingItem
             addToCart={addToCart}
