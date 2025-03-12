@@ -1,6 +1,6 @@
 // appwrite login
 import { NavLink } from "react-router-dom";
-import { account, OAuthProvider } from "../Helper/appwrite";
+import { account } from "../Helper/appwrite";
 const Nav = () => {
   const navToggle = () => {
     const navs = document.querySelector(".nav");
@@ -16,7 +16,7 @@ const Nav = () => {
 
   const login = async () => {
     account.createOAuth2Session(
-      OAuthProvider.GOOGLE,
+      "google",
       "http://localhost:5174/",
       "http://localhost:51734/"
     );

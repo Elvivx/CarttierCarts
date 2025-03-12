@@ -4,12 +4,6 @@ import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 import Stars from "./Stars";
 import { NavLink } from "react-router-dom";
 const ShoppingItem: React.FC<ShoppingItem> = () => {
-  // const {
-  //   addToCart,
-  //   itemInfo,
-  //   // fav,
-  //   addFav,
-  // } = props;
   const [fav, setfav] = useState<boolean>(false);
   const addFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e.currentTarget);
@@ -18,8 +12,8 @@ const ShoppingItem: React.FC<ShoppingItem> = () => {
   };
   return (
     <>
-      <NavLink to="/item">
-        <div className="item">
+      <div className="item">
+        <NavLink to="/item">
           <div className="img">
             <img src={img} alt="itemImage" />
             <span className="fav" onClick={addFav}>
@@ -50,7 +44,8 @@ const ShoppingItem: React.FC<ShoppingItem> = () => {
               )}
             </span>
           </div>
-
+        </NavLink>
+        <NavLink to="/item">
           <div className="itemInfo">
             <div className="left">
               <h3 className="itemName">TWS Earbuds</h3>
@@ -69,8 +64,8 @@ const ShoppingItem: React.FC<ShoppingItem> = () => {
               <small>.00</small>
             </div>
           </div>
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
     </>
   );
 };
