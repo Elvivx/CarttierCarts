@@ -3,82 +3,15 @@ import ShoppingItem from "./ShoppingItem";
 const Shop = () => {
   const { items } = useAppContext();
   // console.log(items);
+
   return (
     <>
       <div className="shopItems">
         <h2 className="title">Headphones For You!</h2>
         <div className="items">
           {items.map((item) => (
-            <ShoppingItem itemInfo={item} index={item.id} key={item.id} />
+            <ShoppingItem itemInfo={item} key={item.id} />
           ))}
-          {/* <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-        <ShoppingItem
-            itemInfo={items}
-          />
-          {/* <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          />
-          <ShoppingItem
-            addToCart={addToCart}
-            itemInfo={itemDescToggle}
-            fav={fav}
-            addFav={addFav}
-          /> */}
         </div>
       </div>
     </>

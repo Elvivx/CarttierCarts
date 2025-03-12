@@ -2,8 +2,17 @@ import { NavLink } from "react-router-dom";
 import Stars from "./Stars";
 import { useAppContext } from "../Context/Context";
 
-const CartItems = ({ item }) => {
-  const { img, name, price, rating, rateNum } = item;
+interface Item {
+  img: string;
+  name: string;
+  price: number;
+  rating: number;
+  rateNum: number;
+  quantity: number;
+}
+
+const CartItems = ({ item }: { item: Item }) => {
+  const { img, name, price, rating, rateNum, quantity } = item;
   const { cart } = useAppContext();
   console.log(cart);
   return (
@@ -20,10 +29,13 @@ const CartItems = ({ item }) => {
             </span>
             <span className="rateNum">({rateNum})</span>
           </div>
-          <div className="amount">
-            <small>$</small>
-            <span>{price}</span>
-            <small>.00</small>
+          <div>
+            <div className="amount">
+              <small>$</small>
+              <span>{price}</span>
+              <small>.00</small>
+            </div>
+            <p>Qunatity: {quantity}</p>
           </div>
         </div>
       </NavLink>

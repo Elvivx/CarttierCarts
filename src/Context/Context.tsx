@@ -3,18 +3,26 @@ import { createContext, useContext } from "react";
 interface AppContextProps {
   cart: [];
   addToCart: (item: object) => void;
-  items: {
-    id: number;
-    img: string;
-    name: string;
-    desc: string;
-    rating: number;
-    rateNum: number;
-    price: number;
-  };
+  items: Item[];
 }
 
-export const Context = createContext<AppContextProps | undefined>(undefined);
+interface Item {
+  id: number;
+  img: string;
+  name: string;
+  desc: string;
+  rating: number;
+  rateNum: number;
+  price: number;
+  quantity: number;
+  TotalQuantity: number;
+}
+
+export const Context = createContext<AppContextProps>({
+  cart: [],
+  addToCart: () => {},
+  items: [],
+});
 
 export function useAppContext() {
   const context = useContext(Context);

@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 import { Context } from "./Context";
 import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 
+interface Item {
+  id: number;
+  // img: string;
+  // name: string;
+  // desc: string;
+  // rating: number;
+  // rateNum: number;
+  // price: number;
+  quantity: number;
+  // TotalQuantity: number;
+}
 const AppContext: React.FC<AppContext> = ({ children }) => {
-  interface Item {
-    id: number;
-    img: string;
-    name: string;
-    desc: string;
-    rating: number;
-    rateNum: number;
-    price: number;
-    quantity?: number;
-    TotalQuantity: number;
-  }
-
   const [cart, setCart] = useState<Item[]>([]);
   //   const [fav, setFav] = useState<[]>([]);
   const items = [
@@ -71,15 +70,13 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
   ];
   const addToCart = (item: Item, q: number) => {
     console.log(item);
-    const check = cart.filter((i) => i.id === item.id);
+    const check = cart.find((i) => i.id === item.id);
     console.log(check);
 
-    if (check.length === 0) {
-      //   console.log(cart);
+    if (!check) {
       const isNumber = (value: number) => typeof value === "number";
       console.log(q);
       setCart([...cart, { ...item, quantity: isNumber(q) ? q : 1 }]);
-      //   if (cart.filter((i) => i.id === item.id)) return;
       console.log("Item added to cart");
     } else {
       console.log("Item already in cart");
@@ -91,7 +88,6 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
 
   const state = {
     cart,
-    // fav,
     items,
     addToCart,
   };

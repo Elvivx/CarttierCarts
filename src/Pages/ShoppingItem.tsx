@@ -10,8 +10,6 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
 
   const addFav = (index: number): void => {
     console.log(index);
-
-    // setFav([...fav, e.currentTarget.parentElement.parentElement.parentElement])
     setfav(!fav);
   };
   const Cart = (item: object) => {
@@ -78,7 +76,6 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
   );
 };
 interface ShoppingItem {
-  addToCart: () => void;
   itemInfo: {
     id: number;
     img: string;
@@ -88,8 +85,5 @@ interface ShoppingItem {
     rating: number;
     rateNum: number;
   };
-
-  fav: boolean;
-  addFav: () => void;
 }
 export default ShoppingItem;

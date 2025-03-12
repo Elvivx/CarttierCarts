@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../Context/Context";
+import { Link } from "react-router-dom";
 
 function Checkout() {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -7,8 +8,15 @@ function Checkout() {
   };
   const {
     cart,
-  }: { cart: { id: number; name: string; price: number; quantity: number }[] } =
-    useAppContext();
+  }: {
+    cart: {
+      id: number;
+      name: string;
+      price: number;
+      quantity: number;
+      img: string;
+    }[];
+  } = useAppContext();
   const [Total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -116,7 +124,7 @@ function Checkout() {
 }
 interface ReviewItem {
   id: number;
-  img: string;
+  img?: string;
   name: string;
   price: number;
   quantity: number;
@@ -124,20 +132,22 @@ interface ReviewItem {
 
 const Review = ({ item }: { item: ReviewItem }) => {
   return (
-    <div className="reviewItem">
-      <div className="left">
-        <div className="img">
-          <img src={item.img} alt="#" />
+    <Link to={`/item?${item.name}&id=${item.id}`}>
+      <div className="reviewItem">
+        <div className="left">
+          <div className="img">
+            <img src={item.img} alt="#" />
+          </div>
+          <p>{item.name}</p>
         </div>
-        <p>{item.name}</p>
+        <div className="amount">
+          <p>${item.price * item.quantity}.00</p>
+          <span>
+            Quantity: <span className="quantity">{item.quantity}</span>
+          </span>
+        </div>
       </div>
-      <div className="amount">
-        <p>${item.price * item.quantity}.00</p>
-        <span>
-          Quantity: <span className="quantity">{item.quantity}</span>
-        </span>
-      </div>
-    </div>
+    </Link>
   );
 };
 export default Checkout;
