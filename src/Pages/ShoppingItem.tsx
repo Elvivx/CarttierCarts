@@ -3,9 +3,9 @@ import Stars from "./Stars";
 import { NavLink } from "react-router-dom";
 import { useAppContext } from "../Context/Context";
 
-const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
+const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
   const [fav, setfav] = useState<boolean>(false);
-  const { img, name, desc, price, rating, rateNum } = itemInfo;
+  const { id, img, name, desc, price, rating, rateNum } = itemInfo;
   const { addToCart } = useAppContext();
 
   const addFav = (index: number): void => {
@@ -20,12 +20,12 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
 
   return (
     <>
-      <div className="item" key={index} id={index.toString()}>
+      <div className="item" key={id} id={id.toString()}>
         <div className="img">
-          <NavLink to={`/item/${name}`}>
+          <NavLink to={`/item?${name}&id=${id}`}>
             <img src={img} alt="itemImage" />
           </NavLink>
-          <span className="fav" onClick={() => addFav(index)}>
+          <span className="fav" onClick={() => addFav(id)}>
             {fav ? (
               <svg
                 viewBox="0 0 24 24"
@@ -80,6 +80,7 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo, index }) => {
 interface ShoppingItem {
   addToCart: () => void;
   itemInfo: {
+    id: number;
     img: string;
     name: string;
     desc: string;
@@ -87,7 +88,7 @@ interface ShoppingItem {
     rating: number;
     rateNum: number;
   };
-  index: number;
+
   fav: boolean;
   addFav: () => void;
 }

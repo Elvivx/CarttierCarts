@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import Stars from "./Stars";
 import { useAppContext } from "../Context/Context";
 
-const CartItems = ({ itemInfo }) => {
-  const { img, name, desc, price, rating, rateNum } = itemInfo;
-  const { items, cart } = useAppContext();
+const CartItems = ({ item }) => {
+  const { img, name, price, rating, rateNum } = item;
+  const { cart } = useAppContext();
   console.log(cart);
   return (
     <>

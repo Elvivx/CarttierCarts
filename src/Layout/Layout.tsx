@@ -59,7 +59,7 @@ function Layout() {
   //     console.log(fav);
   //   }, [cart, fav]);
   return (
-    <AppContext items={[]}>
+    <AppContext>
       <section className="container">
         <section className="top-contact">
           <div className="contents">

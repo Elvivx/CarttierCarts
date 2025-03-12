@@ -8,8 +8,8 @@ const Cart = () => {
     if (cart.length === 0) {
       return <h1>Cart is empty</h1>;
     } else {
-      return cart.map((item: object, index: number) => (
-        <CartItems itemInfo={item} key={index} />
+      return cart.map((item: object[]) => (
+        <CartItems item={item} key={item.id} />
       ));
     }
   };

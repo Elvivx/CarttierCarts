@@ -4,6 +4,7 @@ interface AppContextProps {
   cart: [];
   addToCart: (item: object) => void;
   items: {
+    id: number;
     img: string;
     name: string;
     desc: string;
