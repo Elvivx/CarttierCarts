@@ -1,15 +1,16 @@
-// import PropTypes from "prop-types"
 import { useState } from "react";
-import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 import Stars from "./Stars";
 import { NavLink } from "react-router-dom";
-const ShoppingItem: React.FC<ShoppingItem> = () => {
+
+const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
   const [fav, setfav] = useState<boolean>(false);
+  const { img, name, desc, price, rating, rateNum } = itemInfo;
   const addFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(e.currentTarget);
     // setFav([...fav, e.currentTarget.parentElement.parentElement.parentElement])
     setfav(!fav);
   };
+
   return (
     <>
       <div className="item">
@@ -48,19 +49,19 @@ const ShoppingItem: React.FC<ShoppingItem> = () => {
         <NavLink to="/item">
           <div className="itemInfo">
             <div className="left">
-              <h3 className="itemName">TWS Earbuds</h3>
-              <span className="itemDesc">Full Bass.</span>
+              <h3 className="itemName">{name}</h3>
+              <span className="itemDesc">{desc}</span>
               <div className="rating">
                 <span className="stars">
-                  <Stars rating={4} />
+                  <Stars rating={rating} />
                 </span>
-                <span className="rateNum">(121)</span>
+                <span className="rateNum">({rateNum})</span>
               </div>
               <button>Add to Cart</button>
             </div>
             <div className="amount">
               <small>$</small>
-              <span>89</span>
+              <span>{price}</span>
               <small>.00</small>
             </div>
           </div>
@@ -71,7 +72,14 @@ const ShoppingItem: React.FC<ShoppingItem> = () => {
 };
 interface ShoppingItem {
   addToCart: () => void;
-  itemInfo: () => void;
+  itemInfo: {
+    img: string;
+    name: string;
+    desc: string;
+    price: number;
+    rating: number;
+    rateNum: number;
+  };
   fav: boolean;
   addFav: () => void;
 }

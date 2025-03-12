@@ -1,13 +1,25 @@
 import { useAppContext } from "../Context/Context";
 import ShoppingItem from "./ShoppingItem";
 const Shop = () => {
-  const { addToCart, itemDescToggle, fav, addFav } = useAppContext();
+  const { items } = useAppContext();
+  console.log(items);
   return (
     <>
       <div className="shopItems">
         <h2 className="title">Headphones For You!</h2>
         <div className="items">
-          <ShoppingItem
+          {items.map((item) => (
+            // <ShoppingItem itemInfo={item} />
+          ))}
+          {/* <ShoppingItem
+            addToCart={addToCart}
+            itemInfo={itemDescToggle}
+            fav={fav}
+            addFav={addFav}
+        <ShoppingItem
+            itemInfo={items}
+          />
+          {/* <ShoppingItem
             addToCart={addToCart}
             itemInfo={itemDescToggle}
             fav={fav}
@@ -66,7 +78,7 @@ const Shop = () => {
             itemInfo={itemDescToggle}
             fav={fav}
             addFav={addFav}
-          />
+          /> */}
         </div>
       </div>
     </>
