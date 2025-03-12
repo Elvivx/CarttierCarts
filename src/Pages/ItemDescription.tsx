@@ -1,14 +1,24 @@
 import { useSearchParams } from "react-router-dom";
-import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
 import { useAppContext } from "../Context/Context";
 import Stars from "./Stars";
+import { useState } from "react";
 function FullItemDescription() {
   const { addToCart, items } = useAppContext();
   const [search] = useSearchParams();
   const itemId = Number(search.get("id"));
+  const [quantity, setQunatity] = useState<number>(1);
   // console.log(itemId, items);
   const item = items.filter((i) => i.id === itemId);
   // console.log(item);
+  const itemQunatity = (num: number) => {
+    if (num === 1) {
+      setQunatity(quantity + 1);
+    }
+    if (num === -1) {
+      if (quantity === 1) return;
+      setQunatity(quantity - 1);
+    }
+  };
   return (
     <>
       {item.map((item) => (
@@ -42,7 +52,7 @@ function FullItemDescription() {
               <div className="buyNow">
                 <div className="top">
                   <div className="quantity">
-                    <span className="btn">
+                    <span className="btn" onClick={() => itemQunatity(-1)}>
                       <svg
                         height="12px"
                         id="Layer_1"
@@ -54,8 +64,8 @@ function FullItemDescription() {
                         <path d="M417.4,224H94.6C77.7,224,64,238.3,64,256c0,17.7,13.7,32,30.6,32h322.8c16.9,0,30.6-14.3,30.6-32  C448,238.3,434.3,224,417.4,224z" />
                       </svg>
                     </span>
-                    <span>1</span>
-                    <span className="btn">
+                    <span>{quantity}</span>
+                    <span className="btn" onClick={() => itemQunatity(1)}>
                       <svg
                         height="12px"
                         id="Layer_1"
@@ -72,7 +82,7 @@ function FullItemDescription() {
                     <p>
                       <span>Only </span>
                       <span style={{ color: "#1ab91f", fontWeight: 700 }}>
-                        12 items
+                        {item.TotalQunatity} item{item.TotalQunatity > 1 && "s"}
                       </span>
                       <span> left!</span>
                     </p>

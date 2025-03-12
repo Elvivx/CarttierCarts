@@ -11,9 +11,11 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
     rating: number;
     rateNum: number;
     price: number;
+    quantity?: number;
+    TotalQuantity: number;
   }
 
-  const [cart, setCart] = useState<object[]>([]);
+  const [cart, setCart] = useState<Item[]>([]);
   //   const [fav, setFav] = useState<[]>([]);
   const items = [
     {
@@ -24,6 +26,7 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       rating: 4,
       rateNum: 121,
       price: 89,
+      TotalQunatity: 10,
     },
     {
       id: 2,
@@ -33,6 +36,7 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       rating: 4,
       rateNum: 221,
       price: 189,
+      TotalQunatity: 10,
     },
     {
       id: 3,
@@ -42,6 +46,7 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       rating: 4,
       rateNum: 4121,
       price: 1489,
+      TotalQunatity: 10,
     },
     {
       id: 4,
@@ -51,6 +56,7 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       rating: 4,
       rateNum: 121,
       price: 1589,
+      TotalQunatity: 10,
     },
     {
       id: 5,
@@ -60,16 +66,17 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       rating: 4,
       rateNum: 735,
       price: 689,
+      TotalQunatity: 10,
     },
   ];
   const addToCart = (item: Item) => {
     console.log(item);
-    const check = cart.filter((i) => i === item);
+    const check = cart.filter((i) => i.id === item.id);
     console.log(check);
-    setCart([...cart, item]);
     if (check.length === 0) {
       //   console.log(cart);
 
+      setCart([...cart, item]);
       //   if (cart.filter((i) => i.id === item.id)) return;
       console.log("Item added to cart");
     } else {
@@ -90,11 +97,5 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
 };
 interface AppContext {
   children: React.ReactNode;
-  //   items: [];
-  //   state: {
-  //     cart: [];
-  //     items: [];
-  //     addToCart: (item: object) => void;
-  //   };
 }
 export default AppContext;
