@@ -1,5 +1,5 @@
-import img from "../assets/imgs/freestocks-_3Q3tsJ01nc-unsplash.jpg";
-import Shop from "./Shop";
+import img from "../assets/imgs/freestocks-_3Q3tsJ01nc-unsplash.jpg"
+import Shop from "./Shop"
 const Home: React.FC = () => {
   return (
     <>
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
         <Shop />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

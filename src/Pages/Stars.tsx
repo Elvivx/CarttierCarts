@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 const Stars: React.FC<Stars> = ({ rating }) => {
   return (
     <>
@@ -38,9 +38,9 @@ const Stars: React.FC<Stars> = ({ rating }) => {
         </React.Fragment>
       ))}
     </>
-  );
-};
-interface Stars {
-  rating: number;
+  )
 }
-export default Stars;
+interface Stars {
+  rating: number
+}
+export default Stars

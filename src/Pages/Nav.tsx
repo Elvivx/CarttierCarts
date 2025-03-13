@@ -1,26 +1,26 @@
 // appwrite login
-import { NavLink } from "react-router-dom";
-import { account } from "../Helper/appwrite";
+import { NavLink } from "react-router-dom"
+import { account } from "../Helper/appwrite"
 const Nav = () => {
   const navToggle = () => {
-    const navs = document.querySelector(".nav");
+    const navs = document.querySelector(".nav")
     if (navs) {
-      navs.classList.toggle("showNav");
+      navs.classList.toggle("showNav")
     }
-  };
+  }
   const getUser = async () => {
-    login();
-    const user = await account.get();
-    console.log(user);
-  };
+    login()
+    const user = await account.get()
+    console.log(user)
+  }
 
   const login = async () => {
     account.createOAuth2Session(
       "google",
       "http://localhost:5174/",
       "http://localhost:51734/"
-    );
-  };
+    )
+  }
 
   return (
     <nav className="navs">
@@ -199,12 +199,12 @@ const Nav = () => {
         </svg>
       </div>
     </nav>
-  );
-};
+  )
+}
 
 // interface Nav {
 //   toggle: () => void;
 //   cartToggle: () => void;
 //   home: () => void;
 // }
-export default Nav;
+export default Nav

@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import { useAppContext } from "../Context/Context";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { useAppContext } from "../Context/Context"
+import { Link } from "react-router-dom"
 
 function Checkout() {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+    event.preventDefault()
+  }
   const {
     cart,
   }: {
     cart: {
-      id: number;
-      name: string;
-      price: number;
-      quantity: number;
-      img: string;
-    }[];
-  } = useAppContext();
-  const [Total, setTotal] = useState(0);
+      id: number
+      name: string
+      price: number
+      quantity: number
+      img: string
+    }[]
+  } = useAppContext()
+  const [Total, setTotal] = useState(0)
 
   useEffect(() => {
     const total = cart.reduce((acc, item) => {
-      return acc + item.price * item.quantity;
-    }, 0);
-    setTotal(total);
-  }, [cart]);
-  console.log(cart);
+      return acc + item.price * item.quantity
+    }, 0)
+    setTotal(total)
+  }, [cart])
+  console.log(cart)
   return (
     <>
       <section className="checkout contents">
@@ -35,10 +35,10 @@ function Checkout() {
               <h1>Review Items And Summary</h1>
               {cart.map(
                 (item: {
-                  id: number;
-                  name: string;
-                  price: number;
-                  quantity: number;
+                  id: number
+                  name: string
+                  price: number
+                  quantity: number
                 }) => (
                   <Review key={item.id} item={item} />
                 )
@@ -120,14 +120,14 @@ function Checkout() {
         </div>
       </section>
     </>
-  );
+  )
 }
 interface ReviewItem {
-  id: number;
-  img?: string;
-  name: string;
-  price: number;
-  quantity: number;
+  id: number
+  img?: string
+  name: string
+  price: number
+  quantity: number
 }
 
 const Review = ({ item }: { item: ReviewItem }) => {
@@ -148,6 +148,6 @@ const Review = ({ item }: { item: ReviewItem }) => {
         </div>
       </div>
     </Link>
-  );
-};
-export default Checkout;
+  )
+}
+export default Checkout

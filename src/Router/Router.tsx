@@ -1,11 +1,11 @@
-import { lazy } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../Layout/Layout";
+import { lazy } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Layout from "../Layout/Layout"
 
-const Home = lazy(() => import("../Pages/Home"));
-const Cart = lazy(() => import("../Pages/Cart"));
-const Checkout = lazy(() => import("../Pages/Checkout"));
-const ItemDescription = lazy(() => import("../Pages/ItemDescription"));
+const Home = lazy(() => import("../Pages/Home"))
+const Cart = lazy(() => import("../Pages/Cart"))
+const Checkout = lazy(() => import("../Pages/Checkout"))
+const ItemDescription = lazy(() => import("../Pages/ItemDescription"))
 
 const AppRouter = () => {
   return (
@@ -19,7 +19,7 @@ const AppRouter = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default AppRouter;
+export default AppRouter

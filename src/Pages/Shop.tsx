@@ -1,7 +1,7 @@
-import { useAppContext } from "../Context/Context";
-import ShoppingItem from "./ShoppingItem";
+import { useAppContext } from "../Context/Context"
+import ShoppingItem from "./ShoppingItem"
 const Shop = () => {
-  const { items } = useAppContext();
+  const { items } = useAppContext()
   // console.log(items);
 
   return (
@@ -15,12 +15,12 @@ const Shop = () => {
         </div>
       </div>
     </>
-  );
-};
-interface Shop {
-  addToCart: () => void;
-  itemDescToggle: () => void;
-  fav: boolean;
-  addFav: () => void;
+  )
 }
-export default Shop;
+interface Shop {
+  addToCart: () => void
+  itemDescToggle: () => void
+  fav: boolean
+  addFav: () => void
+}
+export default Shop

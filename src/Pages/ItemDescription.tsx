@@ -1,54 +1,54 @@
-import { useSearchParams } from "react-router-dom";
-import { useAppContext } from "../Context/Context";
-import Stars from "./Stars";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom"
+import { useAppContext } from "../Context/Context"
+import Stars from "./Stars"
+import { useEffect, useState } from "react"
 
 function FullItemDescription() {
-  const { addToCart, items, cart } = useAppContext();
-  const [search] = useSearchParams();
-  const itemId = Number(search.get("id"));
-  const [quantity, setQuantity] = useState<number>(1);
+  const { addToCart, items, cart } = useAppContext()
+  const [search] = useSearchParams()
+  const itemId = Number(search.get("id"))
+  const [quantity, setQuantity] = useState<number>(1)
 
   // Define item and cart item types
   interface Item {
-    id: number;
-    name: string;
-    img: string;
-    rating: number;
-    rateNum: number;
-    price: number;
-    TotalQuantity: number;
+    id: number
+    name: string
+    img: string
+    rating: number
+    rateNum: number
+    price: number
+    TotalQuantity: number
   }
 
   interface CartItem extends Item {
-    quantity: number;
+    quantity: number
   }
 
-  const item = items.find((i) => i.id === itemId) as Item | undefined;
+  const item = items.find((i) => i.id === itemId) as Item | undefined
   const cartItem = cart.find((i: CartItem) => i.id === itemId) as
     | CartItem
-    | undefined;
+    | undefined
 
   useEffect(() => {
-    if (cartItem) setQuantity(cartItem.quantity);
-  }, [cartItem]);
+    if (cartItem) setQuantity(cartItem.quantity)
+  }, [cartItem])
 
-  if (!item) return;
+  if (!item) return
 
   const itemQunatity = (num: number) => {
     if (num === 1) {
-      if (quantity === item.TotalQuantity) return;
-      setQuantity(quantity + 1);
+      if (quantity === item.TotalQuantity) return
+      setQuantity(quantity + 1)
     }
     if (num === -1) {
-      if (quantity === 1) return;
-      setQuantity(quantity - 1);
+      if (quantity === 1) return
+      setQuantity(quantity - 1)
     }
-  };
+  }
 
   const cartBtn = (item: Item, quantity: number) => {
-    addToCart(item, quantity);
-  };
+    addToCart(item, quantity)
+  }
 
   return (
     <>
@@ -224,6 +224,6 @@ function FullItemDescription() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default FullItemDescription;
+export default FullItemDescription

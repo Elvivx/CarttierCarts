@@ -1,20 +1,20 @@
-import { NavLink } from "react-router-dom";
-import Stars from "./Stars";
-import { useAppContext } from "../Context/Context";
+import { NavLink } from "react-router-dom"
+import Stars from "./Stars"
+import { useAppContext } from "../Context/Context"
 
 interface Item {
-  img: string;
-  name: string;
-  price: number;
-  rating: number;
-  rateNum: number;
-  quantity: number;
+  img: string
+  name: string
+  price: number
+  rating: number
+  rateNum: number
+  quantity: number
 }
 
 const CartItems = ({ item }: { item: Item }) => {
-  const { img, name, price, rating, rateNum, quantity } = item;
-  const { cart } = useAppContext();
-  console.log(cart);
+  const { img, name, price, rating, rateNum, quantity } = item
+  const { cart } = useAppContext()
+  console.log(cart)
   return (
     <>
       <NavLink to={`/item/${name}`}>
@@ -40,17 +40,17 @@ const CartItems = ({ item }: { item: Item }) => {
         </div>
       </NavLink>
     </>
-  );
-};
-interface CartItems {
-  toggle: () => void;
-  itemInfo: {
-    img: string;
-    name: string;
-    desc: string;
-    price: number;
-    rating: number;
-    rateNum: number;
-  };
+  )
 }
-export default CartItems;
+interface CartItems {
+  toggle: () => void
+  itemInfo: {
+    img: string
+    name: string
+    desc: string
+    price: number
+    rating: number
+    rateNum: number
+  }
+}
+export default CartItems

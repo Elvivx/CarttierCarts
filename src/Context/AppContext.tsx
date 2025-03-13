@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { Context } from "./Context";
-import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg";
+import { useEffect, useState } from "react"
+import { Context } from "./Context"
+import img from "../assets/imgs/photo-1593487568720-92097fb460fb.jpeg"
 
 interface Item {
-  id: number;
-  quantity: number;
+  id: number
+  quantity: number
 }
 const AppContext: React.FC<AppContext> = ({ children }) => {
-  const [cart, setCart] = useState<Item[]>([]);
+  const [cart, setCart] = useState<Item[]>([])
   //   const [fav, setFav] = useState<[]>([]);
   const items = [
     {
@@ -60,33 +60,33 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       price: 689,
       TotalQunatity: 10,
     },
-  ];
+  ]
   const addToCart = (item: Item, q: number) => {
-    console.log(item);
-    const check = cart.find((i) => i.id === item.id);
-    console.log(check);
+    console.log(item)
+    const check = cart.find((i) => i.id === item.id)
+    console.log(check)
 
     if (!check) {
-      const isNumber = (value: number) => typeof value === "number";
-      console.log(q);
-      setCart([...cart, { ...item, quantity: isNumber(q) ? q : 1 }]);
-      console.log("Item added to cart");
+      const isNumber = (value: number) => typeof value === "number"
+      console.log(q)
+      setCart([...cart, { ...item, quantity: isNumber(q) ? q : 1 }])
+      console.log("Item added to cart")
     } else {
-      console.log("Item already in cart");
+      console.log("Item already in cart")
     }
-  };
+  }
   useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+    console.log(cart)
+  }, [cart])
 
   const state = {
     cart,
     items,
     addToCart,
-  };
-  return <Context.Provider value={state}>{children}</Context.Provider>;
-};
-interface AppContext {
-  children: React.ReactNode;
+  }
+  return <Context.Provider value={state}>{children}</Context.Provider>
 }
-export default AppContext;
+interface AppContext {
+  children: React.ReactNode
+}
+export default AppContext

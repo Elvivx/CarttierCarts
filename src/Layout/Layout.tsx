@@ -1,63 +1,10 @@
-import AppContext from "../Context/AppContext";
-import Footer from "../Pages/Footer";
-import Nav from "../Pages/Nav";
-import "../assets/App.scss";
-import { Outlet } from "react-router-dom";
+import AppContext from "../Context/AppContext"
+import Footer from "../Pages/Footer"
+import Nav from "../Pages/Nav"
+import "../assets/App.scss"
+import { Outlet } from "react-router-dom"
 
-// import { Link } from "react-router-dom"
 function Layout() {
-  //   const [cart, setCart] = useState<string[]>();
-  //   const [fav, setFav] = useState<boolean>(false);
-  //   const [displayHero, setDisplayHero] = useState(true);
-  //   const [displayCart, setDisplayCart] = useState(false);
-  //   const [displayCheckout, setDisplayCheckout] = useState(false);
-  //   const [displayItemDesc, setDisplayItemDesc] = useState(false);
-  //   const home = () => {
-  //     setDisplayCart(false);
-  //     setDisplayCheckout(false);
-  //     setDisplayHero(true);
-  //     setDisplayItemDesc(false);
-  //   };
-  //   const navToggle = () => {
-  //     const navs = document.querySelector(".nav");
-  //     navs.classList.toggle("showNav");
-  //   };
-  //   const cartToggle = () => {
-  //     console.log("work");
-  //     setDisplayCart(true);
-  //     setDisplayCheckout(false);
-  //     setDisplayHero(false);
-  //     setDisplayItemDesc(false);
-  //   };
-  //   const checkoutToggle = () => {
-  //     console.log("work");
-  //     setDisplayCart(false);
-  //     setDisplayCheckout(true);
-  //     setDisplayHero(false);
-  //     setDisplayItemDesc(false);
-  //   };
-  //   const itemDescToggle = () => {
-  //     console.log("work");
-  //     setDisplayCart(false);
-  //     setDisplayCheckout(false);
-  //     setDisplayHero(false);
-  //     setDisplayItemDesc(true);
-  //   };
-  //   const addToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //     console.log(e.currentTarget.parentElement.parentElement.parentElement);
-  //     setCart([
-  //       ...cart,
-  //       e.currentTarget.parentElement.parentElement.parentElement,
-  //     ]);
-  //   };
-  //   const addFav = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //     console.log(e.currentTarget);
-  //     // setFav([...fav, e.currentTarget.parentElement.parentElement.parentElement])
-  //     setFav(!fav);
-  //   };
-  //   useEffect(() => {
-  //     console.log(fav);
-  //   }, [cart, fav]);
   return (
     <AppContext>
       <section className="container">
@@ -98,6 +45,6 @@ function Layout() {
         <Footer />
       </section>
     </AppContext>
-  );
+  )
 }
-export default Layout;
+export default Layout

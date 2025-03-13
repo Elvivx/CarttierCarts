@@ -1,20 +1,20 @@
-import { useState } from "react";
-import Stars from "./Stars";
-import { NavLink } from "react-router-dom";
-import { useAppContext } from "../Context/Context";
+import { useState } from "react"
+import Stars from "./Stars"
+import { NavLink } from "react-router-dom"
+import { useAppContext } from "../Context/Context"
 
 const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
-  const [fav, setfav] = useState<boolean>(false);
-  const { id, img, name, desc, price, rating, rateNum } = itemInfo;
-  const { addToCart } = useAppContext();
+  const [fav, setfav] = useState<boolean>(false)
+  const { id, img, name, desc, price, rating, rateNum } = itemInfo
+  const { addToCart } = useAppContext()
 
   const addFav = (index: number): void => {
-    console.log(index);
-    setfav(!fav);
-  };
+    console.log(index)
+    setfav(!fav)
+  }
   const Cart = (item: object) => {
-    addToCart(item);
-  };
+    addToCart(item)
+  }
 
   return (
     <>
@@ -73,17 +73,17 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 interface ShoppingItem {
   itemInfo: {
-    id: number;
-    img: string;
-    name: string;
-    desc: string;
-    price: number;
-    rating: number;
-    rateNum: number;
-  };
+    id: number
+    img: string
+    name: string
+    desc: string
+    price: number
+    rating: number
+    rateNum: number
+  }
 }
-export default ShoppingItem;
+export default ShoppingItem
