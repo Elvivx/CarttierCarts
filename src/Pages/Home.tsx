@@ -5,7 +5,7 @@ const Home: React.FC = () => {
     <>
       <div className="hero">
         <img src={img} alt="#" />
-        <div className="hero-content">
+        <div className="hero-content font-bold ">
           <h1>Grab Upto 50% Off On</h1>
           <h1>Selected Items.</h1>
           <button>Shop Now</button>

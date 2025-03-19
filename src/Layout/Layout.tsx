@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom"
 function Layout() {
   return (
     <AppContext>
-      <section className="container">
+      <section className="border-2 border-amber-400">
         <section className="top-contact">
           <div className="contents">
             <span className="call">
