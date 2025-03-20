@@ -43,9 +43,12 @@ const router = createBrowserRouter([
       {
         path: "/item/:?",
         element: <ItemDescription />,
-        loader: async ({ params }) => {
-          const id = params.id
-          console.log(id)
+        loader: async ({ request }) => {
+          // const id = request.url
+          const url = new URL(request.url)
+          const query = url.searchParams.get("q")
+          console.log(query)
+          // console.log(id)
         },
       },
 

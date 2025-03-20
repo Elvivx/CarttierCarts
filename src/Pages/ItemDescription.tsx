@@ -6,10 +6,12 @@ import { useEffect, useState } from "react"
 function FullItemDescription() {
   const { addToCart, items, cart } = useAppContext()
   const [search] = useSearchParams()
+  // const [params] = useParams<string()
   const itemId = Number(search.get("id"))
   const [quantity, setQuantity] = useState<number>(1)
 
   // Define item and cart item types
+  // console.log(params)
   interface Item {
     id: number
     name: string

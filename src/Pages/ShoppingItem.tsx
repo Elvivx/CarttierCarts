@@ -52,7 +52,7 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
           </span>
         </div>
         <div className="itemInfo">
-          <div className="left">
+          <div className="left ">
             <NavLink to="/item">
               <h3 className="itemName">{name}</h3>
               <span className="itemDesc">{desc}</span>
@@ -63,7 +63,9 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
                 <span className="rateNum">({rateNum})</span>
               </div>
             </NavLink>
-            <button onClick={() => Cart(itemInfo)}>Add to Cart</button>
+            <button onClick={() => Cart(itemInfo)} className="">
+              Add to Cart
+            </button>
           </div>
           <div className="amount">
             <small>$</small>
