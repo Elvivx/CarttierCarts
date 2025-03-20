@@ -59,14 +59,14 @@ function FullItemDescription() {
           </div>
 
           <div className="itemDescript">
-            <h1 className="itemName">Airpods-Max</h1>
+            <h1 className="itemName text-3xl font-bold">{item.name}</h1>
             <span className="descrip">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
               doloremque, eius voluptas ipsum impedit architecto?
             </span>
 
-            <div className="rating">
-              <span className="stars">
+            <div className="rating flex items-center">
+              <span className="stars flex">
                 <Stars rating={item.rating} />
               </span>
               <span className="rateNum">({item.rateNum})</span>

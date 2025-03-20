@@ -57,7 +57,7 @@ const ShoppingItem: React.FC<ShoppingItem> = ({ itemInfo }) => {
               <h3 className="itemName">{name}</h3>
               <span className="itemDesc">{desc}</span>
               <div className="rating">
-                <span className="stars">
+                <span className="stars flex items-center">
                   <Stars rating={rating} />
                 </span>
                 <span className="rateNum">({rateNum})</span>

@@ -43,7 +43,12 @@ const router = createBrowserRouter([
       {
         path: "/item/:?",
         element: <ItemDescription />,
+        loader: async ({ params }) => {
+          const id = params.id
+          console.log(id)
+        },
       },
+
       {
         path: "/checkout",
         element: <Checkout />,
