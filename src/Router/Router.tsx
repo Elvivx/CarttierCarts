@@ -1,12 +1,7 @@
 import { lazy } from "react"
-import {
-  // BrowserRouter,
-  createBrowserRouter,
-  // Route,
-  RouterProvider,
-  // Routes,
-} from "react-router-dom"
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom"
 import Layout from "../Layout/Layout"
+import Error from "../Helper/Error"
 
 const Home = lazy(() => import("../Pages/Home"))
 const Cart = lazy(() => import("../Pages/Cart"))
@@ -31,10 +26,17 @@ const AppRouter = () => {
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
         element: <Home />,
+        action: async ({ request }) => {
+          const formData = await request.formData()
+          const data = Object.fromEntries(formData)
+          console.log(data)
+          return redirect("/cart")
+        },
       },
       {
         path: "/cart",
@@ -50,6 +52,7 @@ const router = createBrowserRouter([
           console.log(query)
           // console.log(id)
         },
+        errorElement: <Error />,
       },
 
       {
@@ -57,6 +60,10 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ])
 

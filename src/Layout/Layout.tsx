@@ -2,9 +2,11 @@ import AppContext from "../Context/AppContext"
 import Footer from "../Pages/Footer"
 import Nav from "../Pages/Nav"
 import "../assets/App.scss"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigation } from "react-router-dom"
 
 function Layout() {
+  const navigation = useNavigation()
+  console.log(navigation)
   return (
     <AppContext>
       <section className="">

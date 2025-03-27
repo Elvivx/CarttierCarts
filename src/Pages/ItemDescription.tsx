@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom"
 import { useAppContext } from "../Context/Context"
 import Stars from "./Stars"
 import { useEffect, useState } from "react"
+import Error from "../Helper/Error"
 
 function FullItemDescription() {
   const { addToCart, items, cart } = useAppContext()
@@ -11,7 +12,7 @@ function FullItemDescription() {
   const [quantity, setQuantity] = useState<number>(1)
 
   // Define item and cart item types
-  // console.log(params)
+  console.log(itemId)
   interface Item {
     id: number
     name: string
@@ -35,7 +36,7 @@ function FullItemDescription() {
     if (cartItem) setQuantity(cartItem.quantity)
   }, [cartItem])
 
-  if (!item) return
+  if (!item) return <Error />
 
   const itemQunatity = (num: number) => {
     if (num === 1) {

@@ -75,9 +75,6 @@ const AppContext: React.FC<AppContext> = ({ children }) => {
       console.log("Item already in cart")
     }
   }
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
 
   const state = {
     cart,
