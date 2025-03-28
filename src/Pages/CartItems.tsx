@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom"
 import Stars from "./Stars"
-import { useAppContext } from "../Context/Context"
 
 interface Item {
   img: string
@@ -13,8 +12,7 @@ interface Item {
 
 const CartItems = ({ item }: { item: Item }) => {
   const { img, name, price, rating, rateNum, quantity } = item
-  const { cart } = useAppContext()
-  console.log(cart)
+
   return (
     <>
       <NavLink to={`/item/${name}`}>

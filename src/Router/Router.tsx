@@ -9,62 +9,50 @@ const Checkout = lazy(() => import("../Pages/Checkout"))
 const ItemDescription = lazy(() => import("../Pages/ItemDescription"))
 
 const AppRouter = () => {
-  // return (
-  //   <BrowserRouter>
-  //     <Routes>
-  //       <Route path="" element={<Layout />}>
-  //         <Route path="/" element={<Home />} />
-  //         <Route path="/cart" element={<Cart />} />
-  //         <Route path="/item/:?" element={<ItemDescription />} />
-  //         <Route path="/checkout" element={<Checkout />} />
-  //       </Route>
-  //     </Routes>
-  //   </BrowserRouter>
-  // )
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+          action: async ({ request }) => {
+            const formData = await request.formData()
+            const data = Object.fromEntries(formData)
+            console.log(data)
+            return redirect("/cart")
+          },
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
+          path: "/item/:?",
+          element: <ItemDescription />,
+          loader: async ({ request }) => {
+            // const id = request.url
+            const url = new URL(request.url)
+            const query = url.searchParams.get("q")
+            console.log(query)
+            // console.log(id)
+          },
+          errorElement: <Error />,
+        },
+
+        {
+          path: "/checkout",
+          element: <Checkout />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <Error />,
+    },
+  ])
   return <RouterProvider router={router} />
 }
-const router = createBrowserRouter([
-  {
-    element: <Layout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-        action: async ({ request }) => {
-          const formData = await request.formData()
-          const data = Object.fromEntries(formData)
-          console.log(data)
-          return redirect("/cart")
-        },
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/item/:?",
-        element: <ItemDescription />,
-        loader: async ({ request }) => {
-          // const id = request.url
-          const url = new URL(request.url)
-          const query = url.searchParams.get("q")
-          console.log(query)
-          // console.log(id)
-        },
-        errorElement: <Error />,
-      },
-
-      {
-        path: "/checkout",
-        element: <Checkout />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <Error />,
-  },
-])
 
 export default AppRouter

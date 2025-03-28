@@ -1,5 +1,6 @@
 import img from "../assets/imgs/freestocks-_3Q3tsJ01nc-unsplash.jpg"
 import Shop from "./Shop"
+
 const Home: React.FC = () => {
   return (
     <>

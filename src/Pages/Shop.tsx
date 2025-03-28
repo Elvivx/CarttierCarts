@@ -3,7 +3,6 @@ import { useAppContext } from "../Context/Context"
 import ShoppingItem from "./ShoppingItem"
 const Shop = () => {
   const { items } = useAppContext()
-  // console.log(items);
 
   return (
     <>
