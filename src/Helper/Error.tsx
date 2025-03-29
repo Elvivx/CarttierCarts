@@ -7,7 +7,6 @@ const Error = () => {
       <p className="text-red-500 font-bold text-4xl">
         Fuck is you doing going to the wrong path Nigger!!!!
       </p>
-      {/* <p>{error.message}</p> */}
     </div>
   )
 }
